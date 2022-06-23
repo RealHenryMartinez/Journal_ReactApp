@@ -7,8 +7,8 @@ const TableHeader = () => {
         <thead>
             <tr>
                 <th>// Date Written //</th>
-                <th>Content //</th>
-                <th>Remove</th>
+                <th>// Content //</th>
+                <th>// Remove //</th>
             </tr>
         </thead>
     );
