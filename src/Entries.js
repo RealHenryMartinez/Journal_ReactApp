@@ -20,8 +20,10 @@ const EntryBody = props => {
 const Entries = (props) => {
 
     const { entryData, removeEntry } = props;
-
+    console.log(entryData, "this is entry data");
+    
     return (
+        
         <div>
             <h2>My Entries</h2>
             {entryData.map((journal) => (

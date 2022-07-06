@@ -73,22 +73,22 @@ function App() {
   // load/fetch data
 
   // runs when the component loads
-  useEffect(() => {
-    // this functions makes api request for all journals
-    async function loadData() {
-      axios.get('http://localhost:3001/get-all-journals').then((res) => {
-        console.log(res.data.document);
-        setJournals(res.data.document);
+  // useEffect(() => {
+  //   // this functions makes api request for all journals
+  //   async function loadData() {
+  //     axios.get('http://localhost:3001/get-all-journals').then((res) => {
+  //       console.log(res.data.document, "load data");
+  //       setJournals(res.data.document);
 
-      }).catch((err) => {
-        console.log(err);
-      })
-    }
+  //     }).catch((err) => {
+  //       console.log(err);
+  //     })
+  //   }
 
 
-    // run function 
-    loadData();
-  }, [])
+  //   // run function / gets id too 
+  //   loadData();
+  // }, [handleSubmit])
   // ok
 
   // handling submits / adding submits for entries
@@ -108,12 +108,13 @@ function App() {
     //     console.log(err);
     //   })
     // }  
-    
+    console.log(entry);
     const article = { 
-        title: 'Axios POST Request Example', 
-        body: 'incomingData'};
+        title: entry.title, 
+        body: entry.body,
+      };
       
-      axios.post(`https://localhost:3001/add-journal`, article)
+      axios.post(`http://localhost:3001/add-journal`, article)
     // axios.post(`http://localhost:3001/add-journal/${id}`).then((res) => {
     //   console.log(res.data.document);
       // filter through an array -> remove a specific index then delete
@@ -138,13 +139,27 @@ function App() {
     }).catch((err) => {
       console.log(err);
     })
-
-
-
   }
 
+  useEffect(() => {
+    // this functions makes api request for all journals
+    async function loadData() {
+      axios.get('http://localhost:3001/get-all-journals').then((res) => {
+        console.log(res.data.document, "load data");
+        setJournals(res.data.document);
 
-  return (
+      }).catch((err) => {
+        console.log(err);
+      })
+    }
+
+
+    // run function / gets id too 
+    loadData();
+  }, [handleSubmit])
+  
+
+return (
     <div className="App">
       <h1>Journal App</h1>
       {/* adding the list of journals and the remove feature */}
